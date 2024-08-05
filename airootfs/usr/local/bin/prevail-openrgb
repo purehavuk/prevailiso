@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# I hate multiple windows being open...but I do it by accident sometimes. This 
+# will keep only a single OpenRGB instance open.
+
+if pgrep -x "openrgb" > /dev/null
+then
+    exit 0
+else
+    nohup openrgb --startminimized >/dev/null 2>&1 &
+    disown
+    exit 0
+fi

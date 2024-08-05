@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Prevail-Lutris-Optimizations
+
+Exec=prevail-lutris-optimizations
+
+Terminal=false
+Type=Application
+Hidden=True

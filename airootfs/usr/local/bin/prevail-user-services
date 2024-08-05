@@ -1,0 +1,22 @@
+#!/bin/bash
+
+RGB_DETECTION=$(openrgb --list-devices | grep "Location:" | awk '{print $3}')
+
+# Enable Fluidsynth
+systemctl --user enable fluidsynth.service --now
+
+# Enable OpenTabletDriver
+systemctl --user enable opentabletdriver.service --now
+
+# Detect RGB controller and launch OpenRGB
+if [[ $RGB_DETECTION == *"/dev/hidraw"* ]]; then
+    echo "RGB Found at $$RGB_DETECTION" >> "${XDG_CONFIG_HOME:-$HOME/.config/}/RGB.log"
+    nohup openrgb --startminimized >/dev/null 2>&1 &
+    disown
+    exit 0
+else
+    echo "No RGB found." >> "${XDG_CONFIG_HOME:-$HOME/.config/}/RGB.log"
+    exit 1
+fi
+
+exit 0

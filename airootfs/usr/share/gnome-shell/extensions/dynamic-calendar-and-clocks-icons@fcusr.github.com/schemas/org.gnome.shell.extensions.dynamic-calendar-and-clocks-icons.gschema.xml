@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.dynamic-calendar-and-clocks-icons"
+  path="/org/gnome/shell/extensions/dynamic-calendar-and-clocks-icons/">
+    <key name="theme" type="s">
+      <default>'Prevail'</default>
+    </key>
+    <key name="calendar" type="b">
+      <default>true</default>
+    </key>
+    <key name="show-weekday" type="b">
+      <default>true</default>
+    </key>
+    <key name="show-month" type="b">
+      <default>false</default>
+    </key>
+    <key name="clocks" type="b">
+      <default>true</default>
+    </key>
+    <key name="show-seconds" type="b">
+      <default>true</default>
+    </key>
+    <key name="weather" type="b">
+      <default>true</default>
+    </key>
+    <key name="show-background" type="b">
+      <default>false</default>
+    </key>
+    <key name="show-temperature" type="b">
+      <default>false</default>
+    </key>
+  </schema>
+</schemalist>

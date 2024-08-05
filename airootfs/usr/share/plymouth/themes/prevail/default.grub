@@ -1,0 +1,3 @@
+if background_color 48,48,48; then
+  clear
+fi

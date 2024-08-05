@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.task-widget"
+        path="/org/gnome/shell/extensions/task-widget/">
+    <key name="last-active" type="s">
+      <default>""</default>
+    </key>
+    <key name="merge-task-lists" type="b">
+      <default>false</default>
+    </key>
+    <key name="group-past-tasks" type="b">
+      <default>true</default>
+    </key>
+    <key name="hide-header-for-singular-task-lists" type="b">
+      <default>false</default>
+    </key>
+    <key name="hide-empty-completed-task-lists" type="b">
+      <default>false</default>
+    </key>
+    <key name="hide-completed-tasks" type="i">
+      <default>1</default>
+    </key>
+    <key name="hct-apotac-unit" type="i">
+      <default>1</default>
+    </key>
+    <key name="hct-apotac-value" type="i">
+      <default>1</default>
+    </key>
+    <key name="hct-astod-hour" type="i">
+      <default>23</default>
+    </key>
+    <key name="hct-astod-minute" type="i">
+      <default>59</default>
+    </key>
+    <key name="task-list-order" type="as">
+      <default>[]</default>
+    </key>
+    <key name="disabled-task-lists" type="as">
+      <default>[]</default>
+    </key>
+    <key name="show-only-selected-categories" type="b">
+      <default>false</default>
+    </key>
+    <key name="selected-task-categories" type="as">
+      <default>[]</default>
+    </key>
+  </schema>
+</schemalist>

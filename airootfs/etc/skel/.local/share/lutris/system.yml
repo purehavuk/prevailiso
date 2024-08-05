@@ -1,0 +1,4 @@
+system:
+  gpu: ''
+  pulse_latency: true
+  terminal_app: /usr/bin/kgx

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Network Check
+
+Exec=network-check
+
+Terminal=false
+Type=Application
+Hidden=True

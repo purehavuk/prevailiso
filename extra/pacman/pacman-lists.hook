@@ -1,0 +1,9 @@
+[Trigger]
+Operation = Sync
+Type = Package
+Target = *
+
+[Action]
+Description = Update package lists for bash completion
+When = PostTransaction
+Exec = /usr/local/bin/update-package-lists.sh

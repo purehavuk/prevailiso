@@ -1,0 +1,14 @@
+#!/bin/bash
+
+USERNAME=$(whoami)
+
+if [[ $USERNAME == 'prevail' ]]; then
+    echo "$USERNAME"
+    busctl call org.freedesktop.Accounts /org/freedesktop/Accounts/User1000 org.freedesktop.Accounts.User SetIconFile s /usr/share/pixmaps/faces/avatar-prevail-star.png
+    exit 1
+else
+    echo "Not prevail"
+    exit 1
+fi
+
+exit 0

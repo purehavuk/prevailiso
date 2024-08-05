@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=User Services
+
+Exec=prevail-user-services
+
+Terminal=false
+Type=Application
+Hidden=True

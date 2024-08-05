@@ -1,0 +1,126 @@
+#!/bin/sh
+
+# Prevail Optimizations by purehavuk <thiggins@purehavuk.com>
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 2 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+OLD_IFS=$IFS
+
+gdmwhich () {
+  COMMAND="$1"
+  OUTPUT=
+  IFS=:
+  for dir in $PATH
+  do
+    if test -x "$dir/$COMMAND" ; then
+      if test "x$OUTPUT" = "x" ; then
+        OUTPUT="$dir/$COMMAND"
+      fi
+    fi
+  done
+  IFS=$OLD_IFS
+  echo "$OUTPUT"
+}
+
+if [ -f /etc/X11/Xresources ]; then
+    sysresources=/etc/X11/Xresources
+else
+    sysresources=/usr/etc/X11/Xresources
+fi
+
+if [ -f "$sysresources" ]; then
+    xrdb -nocpp -merge "$sysresources"
+fi
+
+if [ -f /etc/X11/Xmodmap ]; then
+    sysmodmap=/etc/X11/Xmodmap
+else
+    sysmodmap=/usr/etc/X11/Xmodmap
+fi
+
+XMODMAP=`gdmwhich xmodmap`
+if [ "x$XMODMAP" != "x" ] ; then
+  if [ "x$GDM_PARENT_DISPLAY" = "x" ]; then
+    if [ -f $sysmodmap ]; then
+      $XMODMAP $sysmodmap
+    fi
+  else
+    ( DISPLAY=$GDM_PARENT_DISPLAY XAUTHORITY=$GDM_PARENT_XAUTHORITY $XMODMAP -pke ) | $XMODMAP -
+  fi
+
+  UNAME=`gdmwhich uname`
+  PROCESSOR=`$UNAME -p`
+  if [ "x$PROCESSOR" = "xsparc" ]; then
+    if $XMODMAP | grep mod4 | grep Alt > /dev/null 2>/dev/null
+    then
+      $XMODMAP -e "clear Mod1" \
+               -e "clear Mod4" \
+               -e "add Mod1 = Alt_L" \
+               -e "add Mod1 = Alt_R" \
+               -e "add Mod4 = Meta_L" \
+               -e "add Mod4 = Meta_R"
+    fi
+  fi
+fi
+
+SETXKBMAP=`gdmwhich setxkbmap`
+if [ "x$SETXKBMAP" != "x" ] ; then
+  if [ -n "$GDM_PARENT_DISPLAY" ]; then
+    XKBSETUP=`( DISPLAY=$GDM_PARENT_DISPLAY XAUTHORITY=$GDM_PARENT_XAUTHORITY $SETXKBMAP -v )`
+    if [ -n "$XKBSETUP" ]; then
+      XKBKEYMAP=`echo "$XKBSETUP" | grep '^keymap' | awk '{ print $2 }'`
+      XKBTYPES=`echo "$XKBSETUP" | grep '^types' | awk '{ print $2 }'`
+      XKBCOMPAT=`echo "$XKBSETUP" | grep '^compat' | awk '{ print $2 }'`
+      XKBSYMBOLS=`echo "$XKBSETUP" | grep '^symbols' | awk '{ print $2 }'`
+      XKBGEOMETRY=`echo "$XKBSETUP" | grep '^geometry' | awk '{ print $2 }'`
+      if [ -n "$XKBKEYMAP" ]; then
+        $SETXKBMAP -keymap "$XKBKEYMAP"
+      elif [ -n "$XKBTYPES" -a -n "$XKBCOMPAT" -a -n "$XKBSYMBOLS" -a -n "$XKBGEOMETRY" ]; then
+        $SETXKBMAP -types "$XKBTYPES" -compat "$XKBCOMPAT" -symbols "$XKBSYMBOLS" -geometry "$XKBGEOMETRY"
+      elif [ -n "$XKBTYPES" -a -n "$XKBCOMPAT" -a -n "$XKBSYMBOLS" ]; then
+        $SETXKBMAP -types "$XKBTYPES" -compat "$XKBCOMPAT" -symbols "$XKBSYMBOLS"
+      elif [ -n "$XKBSYMBOLS" ]; then
+        $SETXKBMAP -symbols "$XKBSYMBOLS"
+      fi
+    fi
+  fi
+fi
+
+# Graphics Detection
+PRIMARY_OUTPUT=$(lspci | grep "VGA" | awk '{print $5}' | sort -u | head -n 1)
+SECONDARY_OUTPUT=$(lspci | grep "VGA" | awk '{print $5}' | sort -u | tail -n 1)
+PRIMARY_RENDERER=$(eglinfo 2>/dev/null | grep "OpenGL core profile vendor:" | sort -u | head -n 1 | awk '{print $5}')
+
+if [ "$(echo "$PRIMARY_OUTPUT" | grep 'Intel')" != "" ] && [ "$(echo "$SECONDARY_OUTPUT" | grep 'NVIDIA')" != "" ] && [ "$(echo "$PRIMARY_RENDERER" | grep 'Intel')" != "" ]; then
+    systemctl enable switcheroo-control --now
+    modeprobe nvidia-drm modeset=1
+    export __GL_SYNC_TO_VBLANK=1
+    export __GL_SYNC_DISPLAY_DEVICE="$primary_display"
+    export VDPAU_NVIDIA_SYNC_DISPLAY_DEVICE="$primary_display"
+elif [ "$(echo "$PRIMARY_OUTPUT" | grep 'NVIDIA')" != "" ] && [ "$(echo "$PRIMARY_RENDERER" | grep 'NVIDIA')" != "" ]; then
+    modeprobe nvidia-drm modeset=1
+    export __GL_SYNC_TO_VBLANK=1
+    export __GL_SYNC_DISPLAY_DEVICE="$primary_display"
+    export VDPAU_NVIDIA_SYNC_DISPLAY_DEVICE="$primary_display"
+elif [ "$(echo "$PRIMARY_OUTPUT" | grep 'Intel')" != "" ] && [ "$(echo "$PRIMARY_RENDERER" | grep 'Intel')" != "" ]; then
+    systemctl stop switcheroo-control
+    systemctl disable switcheroo-control
+elif [ "$(echo "$PRIMARY_OUTPUT" | grep 'AMD')" != "" ] && [ "$(echo "$PRIMARY_RENDERER" | grep 'Intel')" != "" ]; then
+    systemctl stop switcheroo-control
+    systemctl disable switcheroo-control
+else
+    echo "Unknown GPU vendor"
+fi
+
+exit 0

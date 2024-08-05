@@ -1,0 +1,109 @@
+#!/bin/bash
+
+# Prevail Lutris Optimizations by purehavuk <thiggins@purehavuk.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+# Determine graphics setup
+get_primary_display() {
+    primary_display=$(xrandr --query | grep " primary" | awk '{print $1}')
+    echo "$primary_display"
+}
+
+get_dual_info() {
+    gpu_count=$(lspci | grep "VGA" | awk '{print $5}' | sort -u | wc -l)
+
+    if [[ $gpu_count -eq 2 ]]; then
+        echo 'Yes'
+    else
+        echo 'No'
+    fi
+}
+
+get_primary_renderer() {
+    primary_renderer=$(glxinfo | grep -oE "AMD|Intel" | head -n1)
+    echo "$primary_renderer"
+}
+
+determine_primary() {
+    primary_output=$(lspci | grep "VGA" | awk '{print $5}' | sort -u | head -n 1)
+    
+    if echo "$primary_output" | grep -iq 'AMD'; then
+        echo 'AMD'
+    elif echo "$primary_output" | grep -iq 'Intel'; then
+        echo 'Intel'
+    elif echo "$primary_output" | grep -iq 'NVIDIA'; then
+        echo 'NVIDIA'
+    else
+        exit 1
+    fi
+}
+
+determine_dedicated() {
+    dedicated_output=$(lspci | grep "VGA" | awk '{print $5}' | sort -u | tail -n 1)
+    
+    if echo "$dedicated_output" | grep -iq 'AMD'; then
+        echo 'AMD'
+    elif echo "$dedicated_output" | grep -iq 'Intel'; then
+        echo 'Intel'
+    elif echo "$dedicated_output" | grep -iq 'NVIDIA'; then
+        echo 'NVIDIA'
+    fi
+}
+
+configure_hybrid_nvidia() {
+    # Lutris
+    card=' gpu: card1'
+    sed -i "s|^.*gpu:.*|$card|" "${XDG_CONFIG_HOME:-$HOME/.local/}/share/lutris/system.yml"
+}
+
+configure_amd() {
+    # Lutris
+    card=' gpu: card0'
+    sed -i "s|^.*gpu:.*|$card|" "${XDG_CONFIG_HOME:-$HOME/.local/}/share/lutris/system.yml"
+}
+
+configure_intel() {
+    # Lutris
+    card=' gpu: card0'
+    sed -i "s|^.*gpu:.*|$card|" "${XDG_CONFIG_HOME:-$HOME/.local/}/share/lutris/system.yml"
+}
+
+configure_nvidia() {
+    # Lutris
+    card=' gpu: card0'
+    sed -i "s|^.*gpu:.*|$card|" "${XDG_CONFIG_HOME:-$HOME/.local/}/share/lutris/system.yml"
+}
+
+primary_display=$(get_primary_display)
+renderer_results=$(get_primary_renderer)
+dual_results=$(get_dual_info)
+primary_output=$(determine_primary)
+dedicated_output=$(determine_dedicated)
+
+if [[ $dual_results == 'Yes' && $primary_output == 'Intel' && $renderer_results == 'Intel' && $dedicated_output == 'NVIDIA' ]]; then
+    configure_hybrid_nvidia
+elif [[ $dual_results == 'Yes' && $primary_output == 'AMD' && $renderer_results == 'AMD' && $dedicated_output == 'NVIDIA' ]]; then
+    configure_hybrid_nvidia
+elif [[ $dual_results == 'No' && $primary_output == 'AMD' && $renderer_results == 'AMD' ]]; then
+    configure_amd
+elif [[ $dual_results == 'No' && $primary_output == 'Intel' && $renderer_results == 'Intel' ]]; then
+    configure_intel
+elif [[ $dual_results == 'No' && $primary_output == 'NVIDIA' && $renderer_results == 'NVIDIA' ]]; then
+    configure_nvidia
+fi
+
+rm "${XDG_CONFIG_HOME:-$HOME/.config/}/autostart/prevail-lutris-optimizations.desktop"
+
+exit 0

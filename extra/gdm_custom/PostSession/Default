@@ -1,0 +1,9 @@
+#!/bin/sh
+
+systemctl disable auto-cpufreq
+
+#Get current brightness and write to user settings
+SESSION_BRIGHTNESS=$(cat /sys/class/leds/*::kbd_backlight/brightness)
+sed -i '/^\[keyboard_leds\]$/,/^\[/ s/^last_session = 0$/last_session = '"$SESSION_BRIGHTNESS"'/' "${XDG_CONFIG_HOME:-$HOME/.config}/prevail/settings.ini"
+
+exit 0

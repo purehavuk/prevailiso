@@ -1,0 +1,11 @@
+NAME="Prevail"
+PRETTY_NAME="Prevail"
+ID=prevailos
+BUILD_ID=2024.10
+ANSI_COLOR="38;2;23;147;209"
+HOME_URL="https://prevail.purehavuk.com/"
+DOCUMENTATION_URL="https://prevail.purehavuk.com/documentation"
+SUPPORT_URL="https://prevail.purehavuk.com/support"
+BUG_REPORT_URL="https://prevail.purehavuk.com/bugs"
+PRIVACY_POLICY_URL="https://prevail.purehavuk.com/privacy-policy"
+LOGO="prevail-logo"

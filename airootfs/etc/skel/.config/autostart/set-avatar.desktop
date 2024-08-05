@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Live-Avatar
+
+Exec=prevail-avatar
+
+Terminal=false
+Type=Application
+Hidden=True

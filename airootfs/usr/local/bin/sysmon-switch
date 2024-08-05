@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if dconf read /org/gnome/shell/enabled-extensions | grep -q 'system-monitor@gnome-shell-extensions.gcampax.github.com'; then
+
+    gnome-extensions disable 'system-monitor@gnome-shell-extensions.gcampax.github.com'
+
+else
+
+    gnome-extensions enable 'system-monitor@gnome-shell-extensions.gcampax.github.com'
+
+fi
+
+exit

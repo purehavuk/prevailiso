@@ -1,0 +1,41 @@
+#!/bin/sh
+
+# Note: Any setup should come before the sessreg command as that must be 'exec'ed for the pid to be correct (sessreg uses the parent pid)
+# Note: Output goes into the .xsession-errors file for easy debugging
+
+FIRSTBOOT=$(cat "${XDG_CONFIG_HOME:-$HOME/.config/}/prevail/settings.ini" | grep "completed" | awk '{print $3}')
+
+# Keyboard LEDs
+firstbootleds() {
+  INITIAL_LED_SESSION=$(cat "${XDG_CONFIG_HOME:-$HOME/.config/}/prevail/settings.ini" | grep "initial_led_session" | awk '{print $3}')
+  
+  if [[ $INITIAL_LED_SESSION == '0' ]]; then
+    MAX_BRIGHTNESS=$(cat /sys/class/leds/*::kbd_backlight/max_brightness)
+    KBDNAME=$(find /sys/class/leds -name '*::kbd_backlight' -type l -exec readlink -f {} + | grep -o '/[^/]*$')
+    echo "$KBDNAME"
+
+    echo "$MAX_BRIGHTNESS" > "/sys/class/leds$KBDNAME/brightness"
+    sed -i '/^\[initial_boot\]/{n;n;s/\(initial_led_session\s*=\s*\)0/\11/}' "${XDG_CONFIG_HOME:-$HOME/.config/}/prevail/settings.ini"
+  else
+    echo "Nothing to do"
+  fi
+}
+
+continuenormal() {
+  LED_LAST_SESSION=$(cat "${XDG_CONFIG_HOME:-$HOME/.config/}/prevail/settings.ini" | grep "last_session" | awk '{print $3}')
+  KBDNAME=$(find /sys/class/leds -name '*::kbd_backlight' -type l -exec readlink -f {} + | grep -o '/[^/]*$')
+  echo "$KBDNAME"
+
+  echo "$LED_LAST_SESSION" > "/sys/class/leds$KBDNAME/brightness"
+  exit 0
+}
+
+if [[ $FIRSTBOOT == '0' ]]; then
+  firstbootleds
+  sed -i '/^\[initial_boot\]/{n;s/\(completed\s*=\s*\)0/\11/}' "${XDG_CONFIG_HOME:-$HOME/.config/}/prevail/settings.ini"
+  exit 0
+else
+  continuenormal
+fi
+
+exit 0

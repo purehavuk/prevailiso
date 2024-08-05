@@ -1,0 +1,5 @@
+root:x:0:root
+adm:x:4:prevail
+wheel:x:10:prevail
+uucp:x:14:prevail
+prevail:x:1000:

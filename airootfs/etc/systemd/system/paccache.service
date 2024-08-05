@@ -1,0 +1,6 @@
+[Unit]
+Description=Clean up old pacman packages
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/paccache -r

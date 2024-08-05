@@ -1,0 +1,368 @@
+[org/gnome/Console]
+last-window-maximised=false
+last-window-size=(652, 560)
+
+[org/gnome/desktop/app-folders]
+folder-children=['Audio & Video', 'Development','Games', 'Gaming Tools', 'Graphic Design', 'Photography', 'Printing & Scanning', 'Productivity', 'Office', 'System Utilities', 'Utilities']
+
+[org/gnome/desktop/app-folders/folders/Audio & Video]
+apps=['de.haeckerfelix.AudioSharing.desktop', 'app.drey.EarTag.desktop', 'com.vixalien.decibels.desktop', 'org.gnome.Podcasts.desktop']
+categories=['AudioVideo', 'Recording']
+excluded-apps=['org.gnome.Music.desktop', 'org.gnome.Snapshot.desktop', 'org.gnome.Totem.desktop']
+name='Audio & Video'
+translate=false
+
+[org/gnome/desktop/app-folders/folders/Development]
+apps=['code.desktop', 'org.gnome.Builder.desktop', 'org.gnome.dspy.desktop', 'org.gnome.Devhelp.desktop', 'org.gnome.Sysprof.desktop']
+categories=['Development', 'IDE']
+name='Development'
+translate=false
+
+[org/gnome/desktop/app-folders/folders/Games]
+apps=['org.gnome.TwentyFortyEight.desktop', 'sol.desktop', 'atomix.desktop', 'org.gnome.Chess.desktop', 'org.gnome.five-or-more.desktop', 'org.gnome.Four-in-a-row.desktop', 'org.gnome.Hitori.desktop', 'org.gnome.Klotski.desktop', 'org.gnome.LightsOff.desktop', 'org.gnome.Mahjongg.desktop', 'org.gnome.Mines.desktop', 'org.gnome.Nibbles.desktop', 'org.gnome.Quadrapassel.desktop', 'org.gnome.Reversi.desktop', 'org.gnome.Robots.desktop', 'org.gnome.Sudoku.desktop', 'org.gnome.SwellFoop.desktop', 'org.gnome.Tali.desktop', 'org.gnome.Taquin.desktop', 'org.gnome.Tetravex.desktop']
+categories=['Game', 'Games']
+excluded-apps=['dosbox.desktop', 'org.gnome.Games.desktop', 'net.lutris.Lutris.desktop', 'steam.desktop', 'dosbox-staging.desktop']
+name='Games'
+translate=false
+
+[org/gnome/desktop/app-folders/folders/Gaming Tools]
+apps=['dosbox-staging.desktop', 'org.gnome.Games.desktop', 'net.lutris.Lutris.desktop', 'steam.desktop']
+categories=['Gaming']
+name='Gaming Tools'
+translate=false
+
+[org/gnome/desktop/app-folders/folders/Graphic Design]
+apps=['com.github.maoschanz.drawing.desktop', 'gimp.desktop', 'org.inkscape.Inkscape.desktop', 'org.kde.krita.desktop', 'pinta.desktop']
+categories=['Graphics', '2DGraphics', '3DGraphics', 'RasterGraphics']
+excluded-apps=['lightzone.desktop', 'org.gnome.Loupe.desktop', 'org.gnome.Photos.desktop', 'rawtherapee.desktop', 'org.gnome.Evince.desktop', 'simple-scan.desktop']
+name='Graphic Design'
+translate=false
+
+[org/gnome/desktop/app-folders/folders/Office]
+apps=['libreoffice-startcenter.desktop', 'libreoffice-base.desktop', 'libreoffice-calc.desktop', 'libreoffice-draw.desktop', 'libreoffice-impress.desktop', 'libreoffice-math.desktop', 'libreoffice-writer.desktop']
+categories=['Office', 'WordProcessing', 'Spreadsheet', 'Presentation']
+excluded-apps=['org.gnome.Calendar.desktop', 'org.gnome.Contacts.desktop', 'org.gnome.Characters.desktop', 'app.drey.Dialect.desktop', 'org.gnome.Evince.desktop', 'org.gnome.Evolution.desktop', 'com.github.johnfactotum.Foliate.desktop', 'org.gnome.font-viewer.desktop']
+name='Office'
+translate=false
+
+[org/gnome/desktop/app-folders/folders/Photography]
+apps=['lightzone.desktop', 'rawtherapee.desktop']
+categories=['Photography']
+excluded-apps=['gimp.desktop', 'org.inkscape.Inkscape.desktop', 'org.gnome.Photos.desktop']
+name='Photography'
+translate=false
+
+[org/gnome/desktop/app-folders/folders/Printing & Scanning]
+apps=['simple-scan.desktop', 'cups.desktop', 'system-config-printer.desktop']
+categories=['Printing']
+excluded-apps=['org.manjaro.pamac.manager.desktop', 'org.gnome.Firmware.desktop', 'nvidia-settings.desktop', 'OpenRGB.desktop', 'qt5ct.desktop']
+name='Printing & Scanning'
+translate=false
+
+[org/gnome/desktop/app-folders/folders/Productivity]
+apps=['org.gnome.Characters.desktop', 'app.drey.Dialect.desktop', 'org.gnome.Evince.desktop', 'org.gnome.font-viewer.desktop']
+name='Productivity'
+translate=false
+
+[org/gnome/desktop/app-folders/folders/System Utilities]
+apps=['org.manjaro.pamac.manager.desktop', 'org.gnome.Firmware.desktop', 'nvidia-settings.desktop', 'OpenRGB.desktop', 'opentabletdriver.desktop', 'qt5ct.desktop']
+categories=['System', 'Monitor']
+excluded-apps=['cups.desktop', 'system-config-printer.desktop', 'simple-scan.desktop', 'org.gnome.Connections.desktop', 'org.gnome.Console.desktop', 'org.gnome.DiskUtility.desktop', 'org.gnome.FileRoller.desktop', 'org.gnome.PowerStats.desktop', 'org.gnome.Settings.desktop', 'org.gnome.SystemMonitor.desktop', 'org.gnome.Logs.desktop', 'org.gnome.Usage.desktop', 'org.gnome.tweaks.desktop']
+name='System Utilities'
+translate=false
+
+[org/gnome/desktop/app-folders/folders/Utilities]
+apps=['org.gnome.Connections.desktop', 'org.gnome.Console.desktop', 'org.gnome.DiskUtility.desktop', 'org.gnome.FileRoller.desktop', 'org.gnome.Logs.desktop', 'org.gnome.PowerStats.desktop', 'org.gnome.Settings.desktop', 'org.gnome.SystemMonitor.desktop', 'org.gnome.Usage.desktop', 'org.gnome.tweaks.desktop']
+categories=['X-GNOME-Utilities']
+excluded-apps=['org.gnome.Characters.desktop', 'org.gnome.Evince.desktop', 'org.gnome.Loupe.desktop', 'org.gnome.font-viewer.desktop']
+name='Utilities'
+translate=false
+
+[org/gnome/desktop/background]
+color-shading-type='solid'
+picture-options='zoom'
+picture-uri='file:///usr/share/backgrounds/gnome/prevail_dark.jpg'
+picture-uri-dark='file:///usr/share/backgrounds/gnome/prevail_light.jpg'
+primary-color='#303030'
+secondary-color='#000000'
+
+[org/gnome/desktop/datetime]
+automatic-timezone=true
+
+[org/gnome/desktop/input-sources]
+sources=[('xkb', 'us')]
+
+[org/gnome/desktop/interface]
+clock-format='12h'
+color-scheme='prefer-dark'
+document-font-name='Inter Light 11'
+enable-animations=true
+enable-hot-corners=false
+font-antialiasing='rgba'
+font-hinting='medium'
+font-name='Inter 11'
+gtk-enable-primary-paste=false
+gtk-theme='adw-gtk3-dark'
+icon-theme='ePapirus-Dark'
+monospace-font-name='IBM Plex Mono 10'
+
+[org/gnome/desktop/notifications]
+application-children=['gnome-power-panel', 'org-gnome-console']
+
+[org/gnome/desktop/notifications/application/gnome-power-panel]
+application-id='gnome-power-panel.desktop'
+
+[org/gnome/desktop/notifications/application/org-gnome-console]
+application-id='org.gnome.Console.desktop'
+enable=false
+
+[org/gnome/desktop/peripherals/touchpad]
+two-finger-scrolling-enabled=true
+
+[org/gnome/desktop/screensaver]
+color-shading-type='solid'
+picture-options='zoom'
+picture-uri='file:///usr/share/backgrounds/gnome/prevail_light.jpg'
+primary-color='#303030'
+secondary-color='#000000'
+
+[org/gnome/desktop/wm/preferences]
+button-layout='close:appmenu,minimize,maximize'
+
+[org/gnome/gnome-system-monitor]
+show-dependencies=false
+show-whose-processes='user'
+
+[io/missioncenter/MissionCenter]
+apps-page-core-count-affects-percentages=true
+apps-page-merged-process-stats=true
+apps-page-sorting-column='None'
+apps-page-sorting-order='None'
+performance-page-cpu-graph=2
+performance-smooth-graphs=true
+window-height=722
+window-selected-page='performance-page'
+window-width=1024
+
+[org/gnome/mutter]
+center-new-windows=true
+check-alive-timeout=uint32 60000
+experimental-features=['variable-refresh-rate']
+
+[org/gnome/settings-daemon/plugins/color]
+night-light-enabled=false
+night-light-temperature=uint32 4800
+
+[org/gnome/shell]
+app-picker-layout=[{'org.gnome.Calculator.desktop': <{'position': <0>}>, 'org.gnome.Calendar.desktop': <{'position': <1>}>, 'org.gnome.Snapshot.desktop': <{'position': <2>}>, 'org.gnome.clocks.desktop': <{'position': <3>}>, 'org.gnome.Contacts.desktop': <{'position': <4>}>, 'org.gnome.Todo.desktop': <{'position': <5>}>, 'org.gnome.Loupe.desktop': <{'position': <6>}>, 'org.gnome.Nautilus.desktop': <{'position': <7>}>, 'com.github.johnfactotum.Foliate.desktop': <{'position': <8>}>, 'yelp.desktop': <{'position': <9>}>, 'al.getcryst.jadegui.desktop': <{'position': <10>}>, 'org.gnome.Evolution.desktop': <{'position': <11>}>, 'org.gnome.Maps.desktop': <{'position': <12>}>, 'org.gnome.Music.desktop': <{'position': <13>}>, 'io.gitlab.news_flash.NewsFlash.desktop': <{'position': <14>}>, 'org.gnome.Notes.desktop': <{'position': <15>}>, 'org.gnome.Photos.desktop': <{'position': <16>}>, 'org.gnome.Software.desktop': <{'position': <17>}>, 'org.gnome.TextEditor.desktop': <{'position': <18>}>, 'org.gnome.Totem.desktop': <{'position': <19>}>, 'org.gnome.Weather.desktop': <{'position': <20>}>, 'chromium.desktop': <{'position': <21>}>, 'Audio & Video': <{'position': <22>}>, 'Development': <{'position': <23>}>, 'Games': <{'position': <24>}>, 'Gaming Tools': <{'position': <25>}>,'Graphic Design': <{'position': <26>}>, 'Office': <{'position': <27>}>, 'Photography': <{'position': <28>}>, 'Productivity': <{'position': <29>}>}, {'Printing & Scanning': <{'position': <0>}>, 'System Utilities': <{'position': <1>}>, 'Utilities': <{'position': <2>}>}]
+disabled-extensions=['places-menu@gnome-shell-extensions.gcampax.github.com', 'workspace-indicator@gnome-shell-extensions.gcampax.github.com', 'windowsNavigator@gnome-shell-extensions.gcampax.github.com', 'apps-menu@gnome-shell-extensions.gcampax.github.com']
+enabled-extensions=['compiz-windows-effect@hermes83.github.com', 'dynamic-calendar-and-clocks-icons@fcusr.github.com', 'blur-my-shell@aunetx', 'appindicatorsupport@rgcjonas.gmail.com', 'burn-my-windows@schneegans.github.com', 'just-perfection-desktop@just-perfection', 'legacyschemeautoswitcher@joshimukul29.gmail.com', 'prevailmenu@aryan_k', 'panel-corners@aunetx', 'dash-to-dock@micxgx.gmail.com', 'pamac-updates@manjaro.org', 'system-monitor@gnome-shell-extensions.gcampax.github.com', 'desktop-cube@schneegans.github.com', 'gtk4-ding@smedius.gitlab.com', 'lockkeys@vaina.lt', 'panel-date-format@keiii.github.com', 'quick-settings-avatar@d-go', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'wifiqrcode@glerro.pm.me', 'click-to-close-overview@l3nn4rt.github.io', 'task-widget@juozasmiskinis.gitlab.io', 'mediacontrols@cliffniff.github.com']
+favorite-apps=['chromium.desktop', 'org.gnome.Evolution.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.clocks.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Weather.desktop', 'org.gnome.Software.desktop', 'com.github.p3732.OS-Installer.desktop']
+
+[org/gnome/settings-daemon/plugins/media-keys]
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']
+decrease-text-size=['<Super>minus']
+home=['<Super>e']
+increase-text-size=['<Super>equal']
+logout=@as []
+on-screen-keyboard=['<Super>k']
+
+[org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0]
+binding='<Control><Alt>Delete'
+command='missioncenter'
+name='System Monitor'
+
+[org/gnome/shell/extensions/appindicator]
+custom-icons=[('openrgb', 'rgb_wheel', '')]
+
+[org/gnome/shell/extensions/Prevail-menu]
+custom-icon-path='/usr/share/pixmaps/prevail-minimal-logo.svg'
+hide-forcequit=true
+hide-icon-shadow=false
+menu-button-icon-click-type=3
+menu-button-icon-size=28
+menu-button-system-monitor='sysmon-switch'
+menu-button-terminal='kgx'
+show-activities-button=true
+show-lockscreen=false
+use-custom-icon=true
+
+[org/gnome/shell/extensions/blur-my-shell]
+hacks-level=1
+pipelines={'pipeline_default': {'name': <'Default'>, 'effects': <[<{'type': <'native_static_gaussian_blur'>, 'id': <'effect_24496411954781'>, 'params': <{'unscaled_radius': <100>}>}>]>}}
+settings-version=2
+
+[org/gnome/shell/extensions/blur-my-shell/appfolder]
+brightness=0.65000000000000000
+customize=true
+sigma=60
+
+[org/gnome/shell/extensions/blur-my-shell/applications]
+blur=false
+brightness=0.65000000000000000
+dynamic-opacity=false
+opacity=237
+sigma=30
+whitelist=['org.gnome.Nautilus']
+
+[org/gnome/shell/extensions/blur-my-shell/dash-to-dock]
+blur=false
+brightness=0.35000000000000000
+pipeline='pipeline_default'
+
+[org/gnome/shell/extensions/blur-my-shell/lockscreen]
+pipeline='pipeline_default'
+
+[org/gnome/shell/extensions/blur-my-shell/overview]
+customize=true
+pipeline='pipeline_default'
+sigma=100
+
+[org/gnome/shell/extensions/blur-my-shell/panel]
+customize=true
+override-background=true
+override-background-dynamically=true
+pipeline='pipeline_default'
+sigma=15
+static-blur=false
+style-panel=0
+
+[org/gnome/shell/extensions/blur-my-shell/screenshot]
+pipeline='pipeline_default'
+
+[org/gnome/shell/extensions/blur-my-shell/window-list]
+blur=false
+brightness=0.65000000000000000
+sigma=30
+
+[org/gnome/shell/extensions/burn-my-windows]
+active-profile='/home/prevail/.config/burn-my-windows/profiles/standard.conf'
+prefs-open-count=2
+preview-effect=''
+
+[org/gnome/shell/extensions/com/github/hermes83/compiz-windows-effect]
+friction=2.5
+mass=50.0
+resize-effect=true
+speedup-factor-divider=6.5
+spring-k=4.5
+x-tiles=12.0
+y-tiles=12.0
+
+[org/gnome/shell/extensions/dash-to-dock]
+always-center-icons=false
+apply-custom-theme=false
+autohide-in-fullscreen=false
+background-color='rgb(33,33,33)'
+background-opacity=0.0
+click-action='focus-minimize-or-previews'
+custom-background-color=true
+custom-theme-shrink=true
+customize-alphas=true
+dash-max-icon-size=48
+disable-overview-on-startup=true
+dock-position='LEFT'
+extend-height=true
+height-fraction=0.90000000000000000
+hide-tooltip=false
+icon-size-fixed=true
+intellihide=true
+intellihide-mode='ALL_WINDOWS'
+isolate-monitors=true
+max-alpha=0.65000000000000000
+middle-click-action='launch'
+min-alpha=0.0
+pressure-threshold=275.0
+running-indicator-dominant-color=true
+running-indicator-style='SQUARES'
+scroll-action='cycle-windows'
+shift-click-action='minimize'
+shift-middle-click-action='launch'
+show-apps-at-top=false
+show-dock-urgent-notify=true
+show-icons-emblems=true
+show-mounts-network=false
+show-mounts-only-mounted=true
+show-trash=false
+transparency-mode='DYNAMIC'
+
+[org/gnome/shell/extensions/desktop-cube]
+active-workpace-opacity=255
+enable-desktop-dragging=false
+enable-panel-dragging=false
+inactive-workpace-opacity=220
+window-parallax=0.35000000000000000
+edge-switch-pressure=750
+mouse-rotation-speed=1.0
+workpace-separation=16
+
+[org/gnome/shell/extensions/gtk4-ding]
+add-volumes-opposite=false
+show-drop-place=false
+icon-size='small'
+show-home=false
+show-volumes=false
+start-corner='bottom-right'
+
+[org/gnome/shell/extensions/just-perfection]
+dash-icon-size=0
+panel-button-padding-size=17
+panel-indicator-padding-size=23
+panel-size=0
+startup-status=0
+theme=false
+workspace-peek=true
+workspace-wrap-around=true
+
+[org/gnome/shell/extensions/mediacontrols]
+extension-index=uint32 3
+extension-position='Right'
+labels-order=['TITLE','   ▸   ']
+show-control-icons-seek-backward=false
+show-control-icons-seek-forward=false
+show-label=true
+show-player-icon=false
+
+[org/gnome/shell/extensions/panel-corners]
+panel-corners=false
+screen-corner-radius=12
+
+[org/gnome/shell/extensions/panel-date-format]
+format='%A   ꞏ   %B %e, %Y   ꞏ   %l:%M%p'
+
+[org/gnome/shell/extensions/quick-settings-avatar]
+avatar-hostname=false
+avatar-nobackground=true
+avatar-position=1
+avatar-size=128
+avatar-username=false
+
+[org/gnome/shell/extensions/system-monitor]
+show-download=false
+show-upload=false
+
+[org/gnome/shell/extensions/task-widget]
+disabled-task-lists=@as []
+hide-completed-tasks=1
+hide-empty-completed-task-lists=true
+hide-header-for-singular-task-lists=true
+last-active='merge'
+merge-task-lists=true
+
+[org/gnome/GWeather4]
+temperature-unit='fahrenheit'
+
+[org/gnome/shell/weather]
+automatic-location=true
+
+[org/gnome/shell/world-clocks]
+locations=@av []
+
+[org/gnome/system/location]
+enabled=true
+
+[org/gtk/settings/file-chooser]
+clock-format='12h'
+
+[system/locale]
+region='en_us.UTF-8'

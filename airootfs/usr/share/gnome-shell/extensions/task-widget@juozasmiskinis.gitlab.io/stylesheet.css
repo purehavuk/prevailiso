@@ -1,0 +1,69 @@
+.task-widget-remove-calendar-margin:ltr {
+  margin-right: 0;
+}
+
+.task-widget-remove-calendar-margin:rtl {
+  margin-left: 0;
+}
+
+.task-widget-remove-task-box-padding {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.task-widget-column {
+  margin: 0;
+  padding: 0;
+}
+
+.task-widget-column .task-icon {
+  color: #bebebe;
+}
+
+.task-widget-column .task-cancelled {
+  text-decoration: line-through;
+}
+
+.task-widget-column .calendar-month-header {
+  margin-bottom: 10px;
+}
+
+.task-widget-column .subtask-label {
+  font-size: 95%;
+}
+
+.task-widget-column .subtask-indicator {
+  font-size: 1.3em;
+  color: rgba(128, 128, 128, 0.7);
+}
+
+.task-widget-column .world-clocks-city:rtl {
+  text-align: right;
+}
+
+.task-widget-column .transparent {
+  background-color: transparent;
+}
+
+.task-widget-column .world-clocks-city {
+  font-weight: normal;
+}
+
+.task-widget-column .task-list-name {
+  background: transparent;
+  margin: 0;
+  width: auto;
+}
+
+.task-widget-column .task-list-name-button {
+  padding: 5px 10px;
+  margin: 0;
+}
+
+.task-widget-column .task-list-name:ltr {
+  padding: 0 5px 0 0;
+}
+
+.task-widget-column .task-list-name:rtl {
+  padding: 0 0 0 5px;
+}

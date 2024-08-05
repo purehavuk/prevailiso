@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=OpenRGB
+Comment=Control RGB lighting
+Exec=openrgb
+Icon=/usr/share/icons/hicolor/scalable/apps/OpenRGB.svg
+Terminal=false
+Categories=Utility;

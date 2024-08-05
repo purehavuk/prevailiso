@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Enable Prevail desktop enhancements based on detected video
+
+Exec=prevail-lutris-user-enhancements.sh
+
+Terminal=false
+Type=Application
+Hidden=True

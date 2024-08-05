@@ -1,0 +1,9 @@
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", \
+  ENV{ID_VENDOR_ID}=="045e", ENV{ID_MODEL_ID}=="0719", GOTO="xboxdrv_rules"
+GOTO="xboxdrv_rules_end"
+
+LABEL="xboxdrv_rules"
+ACTION=="add", RUN+="/usr/bin/systemctl start xboxdrv"
+ACTION=="remove", RUN+="/usr/bin/systemctl stop xboxdrv"
+
+LABEL="xboxdrv_rules_end"

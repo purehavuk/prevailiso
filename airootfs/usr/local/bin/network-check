@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# Check if network has a connection
+check_network() {
+    if ping -c 1 1.1.1.1 &> /dev/null; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+# loop...because I'm too lazy to make an easy python script. Yet not lazy enough to type a stupid comment about how lazy I am.
+while true; do
+    if check_network; then
+        sudo /usr/bin/geo_td
+        # This is just here to stop gnome-software so it can be refreshed when opened.
+        pkill -f gnome-software
+        # IDK why, but this has to be done, If anybody knows a fix, it would be greatly appreciated.
+        sudo rm -rf /var/lib/pacman/sync/
+        sudo rm -rf /var/cache/pacman/
+        sudo pacman-key --init
+        sudo pacman-key --populate
+        sudo pacman -Syy
+        sleep 5
+        # Removes autostart
+        sudo rm "etc/xdg/autostart/network.desktop"
+        exit 0
+        break
+    else
+        sleep 1
+    fi
+done
+
+exit 0

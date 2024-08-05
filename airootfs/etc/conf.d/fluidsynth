@@ -1,0 +1,2 @@
+SOUND_FONT=/usr/share/soundfonts/GeneralMidi.sf2
+OTHER_OPTS='-a alsa -m alsa_seq -r 48000'
