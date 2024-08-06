@@ -725,16 +725,8 @@ fi
 
 # DEVELOPER ENVIRONMENTS{{{
 
-# Clean CHROOT
+# Set clean CHROOT directory
 CHROOT=$HOME/.chroot
-
-if [ ! -d "$HOME/.chroot/root/" ]; then
-  mkdir $CHROOT
-  clear
-  echo -e '\e[1;38;5;214mCreating clean CHROOT environment at '"'$CHROOT'"'...\e[0m'
-  echo '\e[1;38;5;81mThis will only happen this once.\e[0m'
-  mkarchroot $CHROOT/root base-devel
-fi
 
 #Python
 WORKON_HOME=~/.pyenv
