@@ -402,11 +402,13 @@ _make_customize_airootfs() {
         _msg_info "Done!"
     fi
 
+    # ArchISO deletes all pacman hooks prior to this. This was just easier to copy over.
     _msg_info "Installing pacman hook..."
     install -D -m 0750 -o root "./extra/pacman/pacman-update.hook" "${pacstrap_dir}/etc/pacman.d/hooks/"
     _msg_info "Done!"
 
     # GDM Scripts
+    # GNOME wouldn't install with these present in their folders.
     _msg_info "Installing GDM scripts..."
     install -D -m 0750 -o root "./extra/gdm_custom/Init/Default" "${pacstrap_dir}/etc/gdm/Init/Default"
     install -D -m 0750 -o root "./extra/gdm_custom/PostLogin/Default" "${pacstrap_dir}/etc/gdm/PostLogin/Default"
