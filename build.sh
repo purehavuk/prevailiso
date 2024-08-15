@@ -4,7 +4,7 @@ sudo pacman -Syy
 
 start=$(date +%s)
 
-sudo rm -rf ./out && rm -rf /tmp/prevailiso-tmp
+rm -rf /tmp/prevailiso-tmp
 sudo rm -rf /tmp/prevailiso-tmp
 
 clear
@@ -19,3 +19,5 @@ minutes=$((runtime / 60))
 seconds=$((runtime % 60))
 
 echo -e "Build time: \e[0m$minutes minutes and $seconds seconds"
+
+sudo rm -rf /tmp/prevailiso-tmp
