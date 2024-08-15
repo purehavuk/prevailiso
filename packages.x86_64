@@ -140,8 +140,8 @@ libxml2
 libxnvctrl
 libxslt
 libzip
-linux-prevail
-linux-prevail-headers
+linux-zen
+linux-zen-headers
 linux-atm
 linux-firmware
 linux-firmware-bnx2x
@@ -411,8 +411,6 @@ xdg-user-dirs
 xdg-utils
 
 # GAMEPAD DRIVERS
-dualsensectl
-hid-nintendo-nso-dkms
 wiiuse
 xboxdrv
 

@@ -1,2 +1,4 @@
 arch-install-scripts
 base
+linux-zen
+linux-zen-headers
