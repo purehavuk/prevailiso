@@ -70,6 +70,17 @@ echo "LANG=\"$OSI_LOCALE\"" | sudo tee $workdir/etc/locale.conf || quit_on_err '
 cpu_vender=$(lscpu | grep "Vendor ID:" | awk '{print $3}')
 cpu_type_v3=$(/usr/lib/ld-linux-x86-64.so.2 --help | grep "x86-64-v3")
 
+if [[ $OSI_USE_ENCRYPTION == 1 ]]; then
+	sudo arch-chroot $workdir sed -i 's/^GRUB_ENABLE_CRYPTODISK=n$/GRUB_ENABLE_CRYPTODISK=y/' /etc/default/grub
+	sudo cp $workdir/etc/prevail/installation_data/mkinitcpio/prevail_encrypt.conf $workdir/etc/mkinitcpio.conf.d/prevail.conf
+	sudo cp $workdir/etc/prevail/installation_data/mkinitcpio/prevail.conf $workdir/etc/mkinitcpio.conf
+	sudo arch-chroot $workdir mkinitcpio -P
+else
+	sudo cp /etc/prevail/installation_data/mkinitcpio/prevail.conf $workdir/etc/mkinitcpio.conf.d/prevail.conf
+	sudo cp /etc/prevail/installation_data/mkinitcpio/prevail.conf $workdir/etc/mkinitcpio.conf
+	sudo arch-chroot $workdir mkinitcpio -P
+fi
+
 # CPU Microcode / Auto-CPUFreq
 if [[ "$detected_cpu" == *'Intel'* ]]; then
     iommu_available="Yes"
@@ -175,17 +186,6 @@ fi
 sudo arch-chroot $workdir pacman -Syy --noconfirm
 sudo arch-chroot $workdir pacman -S --noconfirm linux-zen linux-zen-headers
 sudo arch-chroot $workdir pacman -Syu --noconfirm
-
-if [[ $OSI_USE_ENCRYPTION == 1 ]]; then
-	sudo arch-chroot $workdir sed -i 's/^GRUB_ENABLE_CRYPTODISK=n$/GRUB_ENABLE_CRYPTODISK=y/' /etc/default/grub
-	sudo cp $workdir/etc/prevail/installation_data/mkinitcpio/prevail_encrypt.conf $workdir/etc/mkinitcpio.conf.d/prevail.conf
-	sudo cp $workdir/etc/prevail/installation_data/mkinitcpio/prevail.conf $workdir/etc/mkinitcpio.conf
-	sudo arch-chroot $workdir mkinitcpio -P
-else
-	sudo cp /etc/prevail/installation_data/mkinitcpio/prevail.conf $workdir/etc/mkinitcpio.conf.d/prevail.conf
-	sudo cp /etc/prevail/installation_data/mkinitcpio/prevail.conf $workdir/etc/mkinitcpio.conf
-	sudo arch-chroot $workdir mkinitcpio -P
-fi
 
 # Install GRUB
 sudo arch-chroot $workdir grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=Prevail --removable

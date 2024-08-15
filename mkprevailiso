@@ -402,6 +402,9 @@ _make_customize_airootfs() {
         _msg_info "Done!"
     fi
 
+    # Fileystem overrides / Will change with filesystem package
+    install -D -m 0750 -o root "./extra/filesystem/lsb-release" "${pacstrap_dir}/etc/"
+
     # ArchISO deletes all pacman hooks prior to this. This was just easier to copy over.
     _msg_info "Installing pacman hook..."
     install -D -m 0750 -o root "./extra/pacman/pacman-update.hook" "${pacstrap_dir}/etc/pacman.d/hooks/"
