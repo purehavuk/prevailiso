@@ -72,12 +72,19 @@ cpu_type_v3=$(/usr/lib/ld-linux-x86-64.so.2 --help | grep "x86-64-v3")
 
 if [[ $OSI_USE_ENCRYPTION == 1 ]]; then
 	sudo arch-chroot $workdir sed -i 's/^GRUB_ENABLE_CRYPTODISK=n$/GRUB_ENABLE_CRYPTODISK=y/' /etc/default/grub
-	sudo cp $workdir/etc/prevail/installation_data/mkinitcpio/prevail_encrypt.conf $workdir/etc/mkinitcpio.conf.d/prevail.conf
+    if [[ lspci | grep 'NVIDIA' == *'NVIDIA'* ]]; then
+    	sudo cp $workdir/etc/prevail/installation_data/mkinitcpio/prevail_nvidia_encrypt.conf $workdir/etc/mkinitcpio.conf.d/prevail.conf
+    else
+        sudo cp $workdir/etc/prevail/installation_data/mkinitcpio/prevail_encrypt.conf $workdir/etc/mkinitcpio.conf.d/prevail.conf
+    fi
 	sudo cp $workdir/etc/prevail/installation_data/mkinitcpio/prevail.conf $workdir/etc/mkinitcpio.conf
 	sudo arch-chroot $workdir mkinitcpio -P
 else
-	sudo cp /etc/prevail/installation_data/mkinitcpio/prevail.conf $workdir/etc/mkinitcpio.conf.d/prevail.conf
-	sudo cp /etc/prevail/installation_data/mkinitcpio/prevail.conf $workdir/etc/mkinitcpio.conf
+    if [[ lspci | grep 'NVIDIA' == *'NVIDIA'* ]]; then
+    	sudo cp /etc/prevail/installation_data/mkinitcpio/prevail_nvidia.conf $workdir/etc/mkinitcpio.conf.d/prevail.conf
+    else
+        sudo cp /etc/prevail/installation_data/mkinitcpio/prevail.conf $workdir/etc/mkinitcpio.conf.d/prevail.conf
+    fi
 	sudo arch-chroot $workdir mkinitcpio -P
 fi
 
